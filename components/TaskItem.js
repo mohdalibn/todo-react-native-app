@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function TaskItem(props){
 
@@ -39,9 +39,14 @@ const styles = StyleSheet.create({
     },
 
     squareDone: {
-        padding: 10,
-        borderRadius: 5,
-        backgroundColor: '#4B0082'
+        // padding: 10,
+        // borderRadius: 5,
+        // backgroundColor: '#4B0082'
+        width: 18,
+        height: 18,
+        borderWidth: 2,
+        borderRadius: 4,
+        borderColor: "#4B0082"
     },
 
     itemText: {

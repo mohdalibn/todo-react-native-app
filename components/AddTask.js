@@ -1,16 +1,20 @@
 
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, Platform, TextInput } from 'react-native';
 
 export default function AddTask(){
 
     return (
 
         <View style={styles.addTask}>
-            <View style={styles.addTaskStyle}>
-                <Text style={styles.addTaskText}>Add your task here...</Text>
-            </View>
+
+            {/* <KeyboardAvoidingView behavior={Platform.OS === 'ios'? 'padding': 'height'}>
+                <TextInput/>
+            </KeyboardAvoidingView> */}
+
+            <TextInput style={styles.addTaskInput} placeholder='Add your task here...' placeholderTextColor="#000" />
+
             <TouchableOpacity style={styles.addButton} onPress={() => {}}>
-            <Text style={styles.addButtonText}>Add</Text>
+                <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
         </View>
 
@@ -23,30 +27,30 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        padding: 20,
-        backgroundColor: '#662d91',
-        borderRadius: 15
+        borderRadius: 15,
+        marginBottom: 10
       },
     
-    addTaskStyle: {
+    addTaskInput: {
+        color: '#fff',
         padding: 10,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#fff',
-        width: 240
-    },
-
-    addTaskText: {
-        color: '#fff'
+        width: 285,
+        borderWidth: 2,
+        borderColor: "#4B0082"
     },
 
     addButton: {
-        paddingVertical: 10
+        paddingVertical: 5
     },  
 
     addButtonText: {
-        color: '#fff',
-        fontWeight:'bold'
+        color: '#000',
+        // fontWeight:'bold',
+        fontSize: 30,
+        textAlign: 'center'
     }
 
 })
