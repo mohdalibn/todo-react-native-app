@@ -49,9 +49,11 @@ const styles = StyleSheet.create({
     },
 
     squareDelete: {
-        padding: 10,
+        width: 18,
+        height: 18,
+        borderWidth: 2,
         borderRadius: 50,
-        backgroundColor: '#4B0082'
+        borderColor: "#4B0082"
     },
 
     button: {
