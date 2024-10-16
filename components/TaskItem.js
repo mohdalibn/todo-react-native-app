@@ -4,6 +4,12 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function TaskItem(props){
 
+
+    // Handler to delete task
+    const handleDelete = (index) => {
+        props.taskDelete(index);
+    }
+
     return (
 
         <View style={styles.taskItem}>
@@ -13,7 +19,7 @@ export default function TaskItem(props){
                 <Text style={styles.itemText}>{props.text}</Text>
             </View>
 
-            <TouchableOpacity style={styles.squareDelete} onPress={() => {}}></TouchableOpacity>
+            <TouchableOpacity style={styles.squareDelete} onPress={() => handleDelete(props.index)}></TouchableOpacity>
 
         </View>
 

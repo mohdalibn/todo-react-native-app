@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Keyboard, StyleSheet, Text, View } from 'react-native';
 import TaskItem from './components/TaskItem';
 import AddTask from './components/AddTask';
 import * as Font from 'expo-font';
@@ -12,7 +12,21 @@ export default function App() {
 
   const [todoList, setTodoList] = useState([]);
 
+  // Handler to add task
   const handleTaskAdd = (task) => {
+    Keyboard.dismiss();
+      setTodoList([...todoList, task]);
+  }
+
+  // Handler to delete task
+  const handleTaskDelete = (index) => {
+      let listCopy = [...todoList];
+      listCopy.splice(index, 1); 
+      setTodoList(listCopy);
+  }
+
+  // Handler to complete task
+  const handleTaskComplete = (task) => {
       setTodoList([...todoList, task]);
   }
 
@@ -61,7 +75,7 @@ export default function App() {
 
           {
             todoList.map((task, index) => {
-              return <TaskItem key={index} text={task}/>
+              return <TaskItem key={index} index={index} text={task} taskDelete={handleTaskDelete} taskComplete={handleTaskComplete}/>
             } )
           }
 
