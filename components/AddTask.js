@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         padding: 20,
-        backgroundColor: '#000',
+        backgroundColor: '#662d91',
         borderRadius: 15
       },
     
