@@ -1,15 +1,24 @@
 
+import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, Platform, TextInput } from 'react-native';
 
-export default function AddTask(){
+export default function AddTask({ taskAddFunc }){
+
+    const [task, setTask] = useState();
+
+    // This function is used to update the list of todo items in the parent component
+    const handleTaskAdd = () => {
+        taskAddFunc(task);
+        setTask(null); 
+      };
 
     return (
 
         <View style={styles.addTask}>
 
-            <TextInput style={styles.addTaskInput} placeholder='Add your task here...' placeholderTextColor="#000" />
+            <TextInput style={styles.addTaskInput} placeholder='Add your task here...' placeholderTextColor="#000" value={task} onChangeText={text => setTask(text)} />
 
-            <TouchableOpacity style={styles.addButton} onPress={() => {}}>
+            <TouchableOpacity style={styles.addButton} onPress={() => handleTaskAdd()}>
                 <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
         </View>

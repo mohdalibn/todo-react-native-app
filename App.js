@@ -8,7 +8,13 @@ import * as Font from 'expo-font';
 export default function App() {
 
   const [currentTime, setCurrentTime] = useState('');
-  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [_, setFontsLoaded] = useState(false);
+
+  const [todoList, setTodoList] = useState([]);
+
+  const handleTaskAdd = (task) => {
+      setTodoList([...todoList, task]);
+  }
 
   useEffect(() => {
 
@@ -48,14 +54,20 @@ export default function App() {
       
         <View style={styles.tasksContainer}>
 
-          <AddTask/>
+          <AddTask taskAddFunc={handleTaskAdd} />
 
-          
+          {
+            todoList.map((task, index) => {
+              return <TaskItem key={index} text={task}/>
+            } )
+          }
 
-          <TaskItem text={'This is the first task'} />
-          <TaskItem text={'This is the second task'} />
-          <TaskItem text={'This is the third task'} />
-          <TaskItem text={'This is the fourth task'} />
+          {/* <TaskItem text={'Do the Dishes'} />
+          <TaskItem text={'Finish assignment 4'} />
+          <TaskItem text={'Do the laundry'} />
+          <TaskItem text={'Cook dinner'} />
+          <TaskItem text={'Clean your room'} />
+          <TaskItem text={'Finish your reading'} /> */}
 
         </View>
 
