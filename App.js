@@ -8,7 +8,7 @@ import * as Font from 'expo-font';
 export default function App() {
 
   const [currentTime, setCurrentTime] = useState('');
-  const [_, setFontsLoaded] = useState(false);
+  const [fontLoaded, setFontsLoaded] = useState(false);
 
   const [todoList, setTodoList] = useState([]);
 
@@ -39,6 +39,9 @@ export default function App() {
 
   }, []);
 
+  if (!fontLoaded) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
