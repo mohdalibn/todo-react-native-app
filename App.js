@@ -3,12 +3,24 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import TaskItem from './components/TaskItem';
 import AddTask from './components/AddTask';
+import * as Font from 'expo-font';
 
 export default function App() {
 
   const [currentTime, setCurrentTime] = useState('');
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
+
+      const loadFonts = async () => {
+        await Font.loadAsync({
+          'Manrope-Variable': require('./assets/fonts/Manrope-Variable.ttf'),
+          'Manrope-Regular': require('./assets/fonts/Manrope-Regular.ttf'),
+        });
+        setFontsLoaded(true);
+      };
+
+      loadFonts();
 
       const timer = setInterval(() => {
       const now = new Date();
@@ -59,16 +71,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#E8EAED',
     padding: 10,
-    paddingTop: 60
+    paddingTop: 60,
   },
 
   nameTitle: {
     marginTop: 10,
+    fontFamily: 'Manrope-Variable',
     fontSize: 45,
     fontWeight: 'bold',
   },
 
   time: {
+    fontFamily: 'Manrope-Variable',
     fontSize: 25,
     fontWeight: 'light'
   },
@@ -79,8 +93,8 @@ const styles = StyleSheet.create({
   },
 
   mainTitle: {
+    fontFamily: 'Manrope-Regular',
     fontSize: 27,
-    // fontWeight: 'bold',
     marginTop: 10,
     color: "#4B0082"
   },

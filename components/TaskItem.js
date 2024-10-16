@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     },
 
     itemText: {
-
+        fontFamily: 'Manrope-Regular',
     },
 
     squareDelete: {

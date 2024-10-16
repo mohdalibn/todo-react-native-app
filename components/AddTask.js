@@ -7,10 +7,6 @@ export default function AddTask(){
 
         <View style={styles.addTask}>
 
-            {/* <KeyboardAvoidingView behavior={Platform.OS === 'ios'? 'padding': 'height'}>
-                <TextInput/>
-            </KeyboardAvoidingView> */}
-
             <TextInput style={styles.addTaskInput} placeholder='Add your task here...' placeholderTextColor="#000" />
 
             <TouchableOpacity style={styles.addButton} onPress={() => {}}>
@@ -32,14 +28,14 @@ const styles = StyleSheet.create({
       },
     
     addTaskInput: {
-        color: '#fff',
+        color: '#000',
         padding: 10,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#fff',
         width: 285,
         borderWidth: 2,
-        borderColor: "#4B0082"
+        borderColor: "#4B0082",
+        fontFamily: 'Manrope-Regular'
     },
 
     addButton: {
@@ -48,7 +44,6 @@ const styles = StyleSheet.create({
 
     addButtonText: {
         color: '#000',
-        // fontWeight:'bold',
         fontSize: 30,
         textAlign: 'center'
     }
