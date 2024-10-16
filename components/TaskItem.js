@@ -7,10 +7,14 @@ export default function TaskItem(props){
     return (
 
         <View style={styles.taskItem}>
-            <Text style={styles.itemText}>{props.text}</Text>
-            <TouchableOpacity style={styles.button} onPress={() => {}}>
-              <Text style={styles.buttonText}>Delete</Text>
-            </TouchableOpacity>
+            
+            <View style={styles.leftAligned}>
+                <TouchableOpacity style={styles.squareDone} onPress={() => {}}></TouchableOpacity>
+                <Text style={styles.itemText}>{props.text}</Text>
+            </View>
+
+            <TouchableOpacity style={styles.squareDelete} onPress={() => {}}></TouchableOpacity>
+
         </View>
 
     )
@@ -22,10 +26,32 @@ const styles = StyleSheet.create({
     taskItem: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        flexWrap: 'wrap',
         gap: 20,
         padding: 20,
         backgroundColor: '#f0f0f0',
         borderRadius: 15
+    },
+
+    leftAligned: {
+        flexDirection: 'row',
+        gap: 10
+    },
+
+    squareDone: {
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: '#4B0082'
+    },
+
+    itemText: {
+
+    },
+
+    squareDelete: {
+        padding: 10,
+        borderRadius: 50,
+        backgroundColor: '#4B0082'
     },
 
     button: {
