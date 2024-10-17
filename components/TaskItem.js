@@ -16,7 +16,7 @@ export default function TaskItem(props){
             
             <Text style={styles.itemText}>{props.text}</Text>
 
-            <TouchableOpacity style={styles.squareDelete} onPress={() => handleDelete(props.index)}></TouchableOpacity>
+            <TouchableOpacity style={styles.circleDelete} onPress={() => handleDelete(props.index)}></TouchableOpacity>
 
         </View>
     )
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Manrope-Regular',
     },
 
-    squareDelete: {
+    circleDelete: {
         width: 18,
         height: 18,
         borderWidth: 2,
