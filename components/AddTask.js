@@ -7,9 +7,14 @@ export default function AddTask({ taskAddFunc }){
     const [task, setTask] = useState();
 
     // This function is used to update the list of todo items in the parent component
-    const handleTaskAdd = () => {
-        taskAddFunc(task);
-        setTask(null); 
+    const handleAdd = () => {
+        
+        // Adding a check to see if the task is empty
+        if (task && task.trim() !== '') {
+            taskAddFunc(task);
+            setTask(null); 
+          }
+
       };
 
     return (
@@ -18,7 +23,7 @@ export default function AddTask({ taskAddFunc }){
 
             <TextInput style={styles.addTaskInput} placeholder='Add your task here...' placeholderTextColor="#000" value={task} onChangeText={text => setTask(text)} />
 
-            <TouchableOpacity style={styles.addButton} onPress={() => handleTaskAdd()}>
+            <TouchableOpacity style={styles.addButton} onPress={() => handleAdd()}>
                 <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
         </View>
