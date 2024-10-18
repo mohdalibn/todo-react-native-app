@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Welcome from './screens/Welcome';
 import TodoApp from './screens/TodoApp';
 import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
+import { Pressable, Text } from 'react-native';
 
 const toastConfig = {
 
@@ -58,12 +59,27 @@ export default function App() {
         <StackNavigator.Navigator 
         initialRouteName='Welcome' 
         screenOptions={{
-          headerShown: false,
+          headerShown: true,
         }}
         >
-          <StackNavigator.Screen name="Welcome" component={Welcome} />
+          <StackNavigator.Screen name="Welcome" component={Welcome} options={{
+            title: "",
+            headerStyle: {
+              backgroundColor: '#E8EAED'
+            },
+          }} />
 
-        <StackNavigator.Screen name="TodoApp" component={TodoApp} />
+        <StackNavigator.Screen name="TodoApp" component={TodoApp} options={{
+          title: "",
+          headerStyle: {
+            backgroundColor: '#E8EAED'
+          },
+          headerLeft: () => {
+            <Pressable>
+              <Text>Back</Text>
+            </Pressable>
+          }
+        }} />
         </StackNavigator.Navigator>
 
         <Toast config={toastConfig} />
