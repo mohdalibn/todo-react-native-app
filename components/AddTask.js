@@ -4,15 +4,15 @@ import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, Platfor
 
 export default function AddTask({ taskAddFunc }){
 
-    const [task, setTask] = useState();
+    const [task, setTask] = useState('');
 
     // This function is used to update the list of todo items in the parent component
     const handleAdd = () => {
         
         // Adding a check to see if the task is empty
         if (task && task.trim() !== '') {
-            taskAddFunc(task);
-            setTask(null); 
+            taskAddFunc(task.trim());
+            setTask(''); 
           }
 
       };
@@ -21,9 +21,9 @@ export default function AddTask({ taskAddFunc }){
 
         <View style={styles.addTask}>
 
-            <TextInput style={styles.addTaskInput} placeholder='Add your task here...' placeholderTextColor="#000" value={task} onChangeText={text => setTask(text)} />
+            <TextInput style={styles.addTaskInput} placeholder='Add your task here...' placeholderTextColor="#000" value={task} onChangeText={text => setTask(text)} onSubmitEditing={handleAdd} />
 
-            <TouchableOpacity style={styles.addButton} onPress={() => handleAdd()}>
+            <TouchableOpacity style={styles.addButton} onPress={handleAdd}>
                 <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
         </View>
@@ -33,6 +33,7 @@ export default function AddTask({ taskAddFunc }){
 }
 
 const styles = StyleSheet.create({
+    
     addTask: {
         flexDirection: 'row',
         justifyContent: 'space-between',

@@ -5,29 +5,6 @@ import TaskItem from './components/TaskItem';
 import AddTask from './components/AddTask';
 import * as Font from 'expo-font';
 
-if (Platform.OS === 'android') {
-  if (UIManager.setLayoutAnimationEnabledExperimental) {
-    UIManager.setLayoutAnimationEnabledExperimental(true);
-  }
-}
-
-// Adding a subtle animation for when the user adds and deletes a task
-const animateAddAndDelete = {
-  duration: 300,
-  create: {
-    type: LayoutAnimation.Types.easeInEaseOut,
-    property: LayoutAnimation.Properties.scaleXY,
-  },
-  update: {
-    type: LayoutAnimation.Types.easeInEaseOut,
-    springDamping: 0.7,
-  },
-  delete: {
-    type: LayoutAnimation.Types.easeInEaseOut,
-    property: LayoutAnimation.Properties.opacity,
-  },
-};
-
 export default function App() {
 
   const [currentTime, setCurrentTime] = useState('');
@@ -35,18 +12,18 @@ export default function App() {
   const [todoList, setTodoList] = useState([]);
 
   // Handler to add task
-  const handleTaskAdd = (task) => {
+  const handleTaskAdd = (taskText) => {
     Keyboard.dismiss();
-    LayoutAnimation.configureNext(animateAddAndDelete);
-    setTodoList([...todoList, task]);
+    const newTask = {
+      id: Date.now().toString(),
+      text: taskText,
+    };
+    setTodoList([...todoList, newTask]);
   }
 
   // Handler to delete task
-  const handleTaskDelete = (index) => {
-    LayoutAnimation.configureNext(animateAddAndDelete);
-    let listCopy = [...todoList];
-    listCopy.splice(index, 1); 
-    setTodoList(listCopy);
+  const handleTaskDelete = (taskID) => {
+    setTodoList(prevTodoList => prevTodoList.filter(task => task.id !== taskID));
   }
 
   useEffect(() => {
@@ -95,16 +72,14 @@ export default function App() {
           <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollViewContent} showsVerticalScrollIndicator={false}>
             
             {
-              todoList.map((task, index) => {
-                return <TaskItem key={index} index={index} text={task} taskDelete={handleTaskDelete}/>
-              } )
+              todoList.map((task) => {
+                return <TaskItem key={task.id} id={task.id} text={task.text} taskDelete={handleTaskDelete}/>
+              })
             }
 
           </ScrollView>
 
-
         </View>
-
 
       </View>
 
@@ -113,6 +88,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
     backgroundColor: '#E8EAED',
