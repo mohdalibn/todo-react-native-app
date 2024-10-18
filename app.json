@@ -23,11 +23,17 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": {
-      "expo-font": 
+
+    "plugins": [
+      [
+        "expo-font",
         {
-          "fonts": ["./assets/fonts/Manrope-Regular.ttf", "./assets/fonts/Manrope-Variable.ttf"]
+          "fonts": [
+            "./assets/fonts/Manrope-Regular.ttf",
+            "./assets/fonts/Manrope-Variable.ttf"
+          ]
         }
-      }
+      ]
+    ] 
   }
 }
