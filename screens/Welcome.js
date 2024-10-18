@@ -62,7 +62,7 @@ export default function Welcome({navigation}){
                     <Text style={styles.appName}>TaskTide</Text>
                     <Text style={styles.appTagline}>Surfing the Waves of Your To-Dos</Text>
 
-                    <TextInput style={styles.nameInput} placeholder='Enter Your Name' placeholderTextColor="#000" onChangeText={name => setName(name)} />
+                    <TextInput style={styles.nameInput} placeholder='Enter Your Name' placeholderTextColor="#000" onChangeText={name => setName(name)} onSubmitEditing={handleScreenChange} />
 
                     <TouchableOpacity style={styles.enterButton} onPress={handleScreenChange}>
                         <Text style={styles.buttonText}>Enter</Text>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8EAED',
         padding: 10,
         paddingTop: 160,
-      },
+    },
 
     mainContainer: {
         flex: 1,
