@@ -4,8 +4,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Welcome from './screens/Welcome';
 import TodoApp from './screens/TodoApp';
-// import Toast from 'react-native-toast-message';
-
 import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
 
 const toastConfig = {
